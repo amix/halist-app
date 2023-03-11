@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Tray, shell, ipcMain } = require('electron')
+const { app, BrowserWindow, Tray, shell, ipcMain, Menu } = require('electron')
 const path = require('path')
 
 // --- Window managment
@@ -10,7 +10,8 @@ const createWindow = () => {
         height: 750,
         minWidth: 400,
         minHeight: 500,
-        frame: false,
+        titleBarStyle: 'hidden',
+        trafficLightPosition: { x: 14, y: 14 },
         backgroundColor: '#202020',
         icon: __dirname + 'icon.png',
         webPreferences: {
@@ -27,7 +28,7 @@ const ensureHasWindow = () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow()
     }
-    const activeWindow = mainWindow.browserWindow
+    const activeWindow = mainWindow
     if (activeWindow) {
         showWindow(activeWindow)
     }
@@ -38,6 +39,7 @@ const showWindow = (window) => {
     if (window.isMinimized()) {
         window.restore()
     }
+    window.focus()
 }
 
 // --- App Listners
@@ -57,6 +59,17 @@ app.whenReady().then(() => {
         }
         shell.openExternal(arg)
     })
+    const tray = new Tray(path.join(__dirname, 'src', 'menuicon.png'))
+    tray.on('click', () => {
+        if(mainWindow && mainWindow.isVisible()) {
+            mainWindow.hide()
+        }
+        else {
+            ensureHasWindow()
+        }
+    })
+    tray.setToolTip('Open Halist AI')
+    tray.setContextMenu(contextMenu)
 })
 
 app.setAsDefaultProtocolClient("halist")
