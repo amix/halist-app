@@ -1,0 +1,1 @@
+window.addEventListener("DOMContentLoaded",(function(){"object"==typeof navigator&&"string"==typeof navigator.userAgent&&navigator.userAgent.indexOf("Electron")>=0?document.body.classList.add("electron-app"):"undefined"!=typeof chrome&&document.body.classList.add("plugin-app")}));
