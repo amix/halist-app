@@ -1,0 +1,31 @@
+{
+  "name": "Halist AI",
+  "version": "1.5.0",
+  "description": "Get instant answers from ChatGPT from your desktop",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron-forge start",
+    "package": "electron-forge package --arch=universal",
+    "make": "electron-forge make"
+  },
+  "repository": "https://github.com/amix/halist-for-desktop",
+  "author": "Amir Salihefendic",
+  "bugs": {
+    "url": "https://github.com/amix/wist-desktop/issues"
+  },
+  "homepage": "https://github.com/amix/wist-desktop#readme",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.5",
+    "@electron-forge/maker-deb": "^6.0.5",
+    "@electron-forge/maker-rpm": "^6.0.5",
+    "@electron-forge/maker-squirrel": "^6.0.5",
+    "@electron-forge/maker-zip": "^6.0.5",
+    "electron": "^23.1.2"
+  },
+  "dependencies": {
+    "electron-log": "^5.0.0-beta.16",
+    "electron-squirrel-startup": "^1.0.0",
+    "update-electron-app": "^2.0.1"
+  }
+}
